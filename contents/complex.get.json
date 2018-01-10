@@ -1,0 +1,24 @@
+{
+	"_bean": true,
+	"responses": [
+		{
+			"params": {
+				"product": "1111"
+			},
+			"contents": {
+				"id": 1111,
+				"title": "product 1111"
+			}
+		},
+		{
+			"params": {
+				"product": "2222"
+			},
+			"contents": {
+				"id": 2222,
+				"title": "product 2222"
+			},
+			"status": 201
+		}
+	]
+}
