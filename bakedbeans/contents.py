@@ -40,6 +40,14 @@ class ContentResolver(object):
         ]
     }
 
+    RESPONSE_CODES = {
+        'get': 200,
+        'post': 201,
+        'delete': 204,
+        'put': 200,
+        'patch': 200
+    }
+
     def __init__(self, base, url, method):
         self.base = base
         self.url = url.replace('//', '/')
@@ -97,8 +105,11 @@ class ContentResolver(object):
             response = responses[0]
         return (
             response.get('contents', {}),
-            response.get('status', 200)
+            response.get('status', self.default_response_code())
         )
+
+    def default_response_code(self):
+        return self.RESPONSE_CODES.get(self.method, 200)
 
     @property
     def response(self):
@@ -109,4 +120,4 @@ class ContentResolver(object):
             log.info('Content is a bean, resolving')
             self.validate_bean(content)
             return self.resolve_bean(content)
-        return content, 200
+        return content, self.default_response_code()

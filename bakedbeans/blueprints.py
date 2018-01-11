@@ -16,14 +16,14 @@ beans = Blueprint('name', __name__)
 def catch_all(path: str):
     try:
         body, status = ContentResolver(
-            current_app.config['BEANS'],
-            path,
-            request.method.lower()
+            base=current_app.config['BEANS'],
+            url=path,
+            method=request.method.lower()
         ).response
     except ContentNotFoundError:
         return jsonify({'error': f'content not found {path}'}), 404
     except InvalidContent:
         return jsonify({'error': 'content invalid'}), 500
     except BeanValidationError:
-        return jsonify({'error': 'content bean invalid'}), 500
+        return jsonify({'error': 'This is one mouldy bean'}), 500
     return jsonify(body), status
