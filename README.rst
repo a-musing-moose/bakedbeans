@@ -1,7 +1,9 @@
 Baked Beans
 ===========
 
-Baked Beans is a terribly named HTTP stub server for REST services that deal in JSON payloads.  It takes a super simple approach of using a folder of contents that provide the canned responses it produces.
+Baked Beans is a terribly named HTTP stub server for REST services that deal in JSON payloads written in Python but easily runnable as a Docker container.
+
+It takes a super simple approach of using a folder of contents that provide the canned responses it produces.
 
 e.g ``GET http://localhost:3000/path/to/some/resource`` would map to the file: ``<base_folder>/path/to/some/resource.get.json``.
 
