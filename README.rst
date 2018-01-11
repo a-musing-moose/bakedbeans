@@ -40,6 +40,7 @@ You can specify the host name with ``--host`` and the port it binds to with ``--
 Baked Beans is also built with Docker in mind. To run Baked Beans in docker you will need to mount your local contents directory as a volume.  For example:
 
 .. code-block:: bash
+
     docker run -it --rm -p 3000:3000 -v /full/path/to/contents:/contents moose/bakedbeans
 
 This will run Baked Beans in a container that will remove itself once exit, mounting the ``/full/path/to/contents`` inside the container at ``/contents`` which is where Baked Beans is configured to load the contents from.
