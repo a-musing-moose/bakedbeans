@@ -3,6 +3,7 @@ import os
 
 from setuptools import setup
 
+
 NAME = 'bakedbeans'
 
 here = os.path.abspath(os.path.dirname(__file__))

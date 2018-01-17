@@ -54,12 +54,10 @@ class ContentResolver(object):
         self.method = method
 
     def build_path(self):
-        path = None
         if self.url.endswith('/') or self.url == '':
-            path = f'{self.url}index.{self.method}.json'
+            self.path = f'{self.url}index.{self.method}.json'
         else:
-            path = f'{self.url}.{self.method}.json'
-        self.path = path
+            self.path = f'{self.url}.{self.method}.json'
         return self.path
 
     def resolve_path(self):
@@ -97,7 +95,7 @@ class ContentResolver(object):
         responses = bean['responses']
         response = None
         for r in responses:
-            if self.matches_params(response.get('params', {})):
+            if self.matches_params(r.get('params', {})):
                 response = r
                 break
         if response is None:
