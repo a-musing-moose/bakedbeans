@@ -1,6 +1,9 @@
 Baked Beans
 ===========
 
+.. image:: https://travis-ci.org/a-musing-moose/bakedbeans.svg?branch=master
+    :target: https://travis-ci.org/a-musing-moose/bakedbeans
+
 Baked Beans is a terribly named HTTP stub server for REST services that deal in JSON payloads written in Python but easily runnable as a Docker container.
 
 It takes a super simple approach of using a folder of contents that provide the canned responses it produces.
