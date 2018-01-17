@@ -1,6 +1,6 @@
 language: python
 python:
   - '3.6'
-install: pip install -r dev_requirement.txt
+install: pip install -r dev_requirements.txt
 script:
   pytest
