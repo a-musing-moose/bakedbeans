@@ -11,8 +11,9 @@ from .exceptions import (
 beans = Blueprint('name', __name__)
 
 
-@beans.route('/', defaults={'path': ''})
-@beans.route('/<path:path>')
+@beans.route('/', defaults={'path': ''},
+             methods=['GET', 'POST', "DELETE", "PUT", "PATCH"])
+@beans.route('/<path:path>', methods=['GET', 'POST', "DELETE", "PUT", "PATCH"])
 def catch_all(path: str):
     try:
         body, status = ContentResolver(
