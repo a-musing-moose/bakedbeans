@@ -73,3 +73,18 @@ def test_catch_all_returns_body_and_status_from_resolver(app, monkeypatch):
     assert response.status_code == 200
     data = json.loads(response.get_data())
     assert data.get('yes', False)
+
+
+@pytest.mark.parametrize("method, status_code", (
+    ('get', 200),
+    ('post', 201),
+    ('delete', 204),
+    ('put', 200),
+    ('patch', 200)
+))
+def test_app_catch_all_view_support_all_methods(app, tmpdir, method, status_code):
+    content_file = tmpdir / ('index.' + method + '.json')
+    with content_file.open('w') as r:
+        r.write('{"_bean": true, "responses": [{"contents": {"yes": true}}]}')
+    response = getattr(app, method)('/')
+    assert response.status_code == status_code
